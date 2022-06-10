@@ -1,0 +1,22 @@
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+         ListNode *curr=head;
+        int s=0;
+        while(curr!=NULL){
+            s++;
+            if(head->next==NULL){
+                return NULL;  
+            }
+            curr->val=100001;
+            curr=curr->next;
+            if (curr->next==NULL){
+                return NULL;
+            }
+            if(curr->val==100001){
+                return curr;
+            }  
+        }
+        return NULL;
+    } 
+};
