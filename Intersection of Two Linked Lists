@@ -1,0 +1,49 @@
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+       if(headA == NULL or headB == NULL){
+            return NULL;
+        }
+        if(headA == headB){
+            return headA;
+        }
+        ListNode *pointer1 = headA;
+        ListNode *pointer2 = headB;
+        
+        int m = 0;
+        int n = 0;
+        
+        while(pointer1){
+            m++;
+            pointer1 = pointer1->next;
+        }
+        
+        while(pointer2){
+            n++;
+            pointer2 = pointer2->next;
+        }
+        int lengthDiff = abs(m-n);
+        
+        if(m>n){
+           while(lengthDiff){
+               lengthDiff--;
+               headA = headA->next;
+           } 
+        }else{
+            while(lengthDiff){
+               lengthDiff--;
+               headB = headB->next;
+           } 
+        }
+        
+        while(headA !=NULL && headB !=NULL){
+           if(headA == headB){
+               return headA;
+           }
+            headA = headA->next;
+            headB = headB->next;
+        }        
+        return NULL;
+    }  
+    
+};
