@@ -1,0 +1,14 @@
+class Solution {
+    void f(TreeNode* node, vector<int>&ans) {
+        if(node == nullptr) return;
+        f(node->left, ans);
+        f(node->right, ans);
+        ans.push_back(node->val);
+    }
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        f(root, ans);
+        return ans;
+    }
+};
